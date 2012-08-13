@@ -17,7 +17,7 @@ sub parseModel {
 	my $xml = XML::LibXML->load_xml( location => $_[0]);
 	my $xpc = XML::LibXML::XPathContext->new($xml);
 	$xpc->registerNs("model", "http://schema.qcadoo.org/model");
-	my $className = ucfirst($xpc->findvalue("/model:model/\@name"));
+	my $className = ucfirst($xpc->findvalue("/model:model/\@name")) . "Fields";
 
 	print "public final class $className {\n";
 	print "\n\tprivate $className() {}\n\n";
